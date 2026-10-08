@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+@theme {
+  --font-fredoka: 'Fredoka', cursive, sans-serif;
+  --font-nunito: 'Nunito', sans-serif;
+  --font-baloo: 'Baloo 2', cursive, sans-serif;
+
+  --color-jirafa-butter: #FFF1A8;
+  --color-jirafa-sun: #FFD54F;
+  --color-jirafa-amber: #F9BE36;
+  --color-jirafa-cream: #FFF9E8;
+  --color-jirafa-cacao: #765137;
+  --color-jirafa-sage: #A7C99A;
+  --color-jirafa-forest: #557A55;
+  --color-jirafa-peach: #FFC6A5;
+  --color-jirafa-warmwhite: #FFFDF5;
+}
+
+:root {
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
+.font-accent {
+  font-family: 'Baloo 2', cursive, sans-serif;
+}
+
+/* Giraffe pattern texture overlay */
+.giraffe-pattern-bg {
+  background-color: #FFF9E8;
+  background-image: radial-gradient(#F9BE36 15%, transparent 16%), radial-gradient(#FFD54F 15%, transparent 16%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  opacity: 0.95;
+}
+
+.giraffe-spots-subtle {
+  background-image: radial-gradient(rgba(249, 190, 54, 0.12) 18%, transparent 20%), radial-gradient(rgba(118, 81, 55, 0.05) 15%, transparent 18%);
+  background-size: 48px 48px;
+  background-position: 0 0, 24px 24px;
+}
+
+/* Custom animations */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+@keyframes ear-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes tail-wag {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-gentle 5s ease-in-out 1.5s infinite;
+}
+
+.animate-ear {
+  transform-origin: bottom center;
+  animation: ear-wiggle 3s ease-in-out infinite;
+}
+
+.animate-tail {
+  transform-origin: top left;
+  animation: tail-wag 2s ease-in-out infinite;
+}
+
+.animate-leaf {
+  transform-origin: top left;
+  animation: leaf-sway 3.5s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF9E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #F9BE36;
+  border-radius: 9999px;
+  border: 2px solid #FFF9E8;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #765137;
+}

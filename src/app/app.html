@@ -1,0 +1,64 @@
+<div class="min-h-screen flex flex-col bg-[#FFF9E8] text-[#765137] selection:bg-[#FFD54F] selection:text-[#765137]">
+  <!-- Top Navigation Header -->
+  <app-navbar />
+
+  <!-- Main Safari Content -->
+  <main class="flex-1">
+    <!-- Hero Interactive Section -->
+    <app-hero />
+
+    <!-- 1. Interactive Zoo Theme Park Map -->
+    <app-interactive-map />
+
+    <!-- 2. The 4 Giraffe Species Gallery -->
+    <app-giraffes-gallery />
+
+    <!-- 2b. Colección Artística 100% SVG (Figuras Vectoriales, Mosaicos, Retrato y Siluetas) -->
+    <app-svg-showcase />
+
+    <!-- 3. Africa Geographic Map & Range Distribution -->
+    <app-africa-map />
+
+    <!-- 4. Play & Learn: Interactive Safari Minigames -->
+    <section id="juegos" class="py-20 bg-[#FFFDF5] relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF1A8] border border-[#F9BE36] text-xs sm:text-sm font-bold text-[#765137]">
+            <mat-icon class="text-base text-amber-700">sports_esports</mat-icon>
+            <span>Interacciones Divertidas &middot; Minijuegos</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-[#765137] font-heading tracking-tight">
+            Juega y Aprende en el Safari
+          </h2>
+
+          <p class="text-base sm:text-lg text-[#765137]/80">
+            Pon a prueba tu curiosidad. Alimenta a la jirafa con hojas de acacia y aprende a distinguir cada patrón de manchas para desbloquear pegatinas para tu álbum.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <!-- Feeding Minigame -->
+          <app-feeding-game />
+
+          <!-- Spots Pattern Detective Minigame -->
+          <app-spots-game />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Beautiful Photographic Moments Gallery -->
+    <app-moments-gallery />
+
+    <!-- 6. Giant Visual Curiosities Infographic Section -->
+    <app-visual-curiosities />
+  </main>
+
+  <!-- Storybook Footer -->
+  <app-footer />
+
+  <!-- Sticker Album Modal Dialog & Alerts -->
+  <app-sticker-album-modal />
+</div>
