@@ -21,6 +21,10 @@
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
 }
 
+section[id], #alimentar-jirafa, #juego-manchas {
+  scroll-margin-top: 100px;
+}
+
 h1, h2, h3, .font-heading {
   font-family: 'Fredoka', cursive, sans-serif;
 }
@@ -114,6 +118,13 @@ h1, h2, h3, .font-heading {
 .animate-leaf {
   transform-origin: top left;
   animation: leaf-sway 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-float-delayed, .animate-ear, .animate-tail,
+  .animate-leaf, .animate-bounce, .animate-pulse, .animate-ping {
+    animation: none !important;
+  }
 }
 
 /* Custom scrollbar */

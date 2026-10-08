@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { MatIconModule } from '@angular/material/icon';
 import { Sound } from '../services/sound';
 import { Album } from '../services/album';
+import { GiraffeArt } from './svg/giraffe-art';
+import { AcaciaArt } from './svg/acacia-art';
 
 interface LeafItem {
   id: number;
@@ -14,9 +16,9 @@ interface LeafItem {
 @Component({
   selector: 'app-feeding-game',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, GiraffeArt, AcaciaArt],
   template: `
-    <div class="bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+    <div id="alimentar-jirafa" class="bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
       
       <!-- Header -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#F9BE36]/30">
@@ -57,13 +59,7 @@ interface LeafItem {
         <!-- Acacia Tree on the Right side -->
         <div class="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none">
           <svg viewBox="0 0 280 400" class="w-full h-full">
-            <!-- Tree trunk -->
-            <path d="M220 400 L210 240 Q200 180 160 140 M210 240 Q230 180 250 150" stroke="#765137" stroke-width="12" stroke-linecap="round" fill="none"/>
-            <path d="M160 140 Q130 120 90 100 M160 140 Q180 90 200 70" stroke="#765137" stroke-width="8" stroke-linecap="round" fill="none"/>
-            <!-- Acacia canopy umbrellas -->
-            <ellipse cx="140" cy="80" rx="90" ry="32" fill="#557A55" opacity="0.95"/>
-            <ellipse cx="150" cy="72" rx="75" ry="24" fill="#A7C99A" opacity="0.85"/>
-            <ellipse cx="230" cy="120" rx="60" ry="26" fill="#3F623F" opacity="0.9"/>
+            <g app-acacia-art transform="translate(-35 -20) scale(2.25)" />
           </svg>
         </div>
 
@@ -92,79 +88,8 @@ interface LeafItem {
         <div class="absolute left-4 sm:left-12 bottom-0 w-64 h-full pointer-events-none transition-transform duration-500"
              [class.translate-x-6]="isMunching()"
              [class.rotate-1]="isMunching()">
-          <svg viewBox="0 0 240 380" class="w-full h-full">
-            <!-- Body -->
-            <path d="M40 380 C50 300 70 260 100 240 L140 240 C160 270 170 320 180 380 Z" fill="#F9BE36"/>
-            <!-- Body spots -->
-            <rect x="70" y="270" width="16" height="15" rx="5" fill="#765137" opacity="0.85"/>
-            <rect x="100" y="280" width="18" height="16" rx="5" fill="#765137" opacity="0.85"/>
-            <rect x="130" y="300" width="16" height="15" rx="5" fill="#765137" opacity="0.85"/>
-
-            <!-- Long Neck stretching toward leaves -->
-            <path 
-              [attr.d]="isMunching() 
-                ? 'M100 245 C115 180 135 120 160 70 L195 75 C180 130 160 190 145 245 Z'
-                : 'M100 245 C110 180 120 120 135 75 L170 80 C160 130 150 190 145 245 Z'"
-              fill="#F9BE36"
-              class="transition-all duration-300"
-            />
-            <!-- Spots on neck -->
-            <rect x="118" y="100" width="14" height="15" rx="4" fill="#765137" opacity="0.85"/>
-            <rect x="124" y="135" width="16" height="16" rx="5" fill="#765137" opacity="0.85"/>
-            <rect x="122" y="175" width="18" height="17" rx="5" fill="#765137" opacity="0.85"/>
-            <rect x="115" y="215" width="16" height="16" rx="5" fill="#765137" opacity="0.85"/>
-
-            <!-- Mane -->
-            <path d="M102 240 C110 180 120 120 136 78" stroke="#765137" stroke-width="4" stroke-dasharray="4,4"/>
-
-            <!-- Head Group -->
-            <g [attr.transform]="isMunching() ? 'translate(25, -5) rotate(5, 175, 75)' : 'translate(0, 0)'" class="transition-transform duration-300">
-              
-              <!-- Ears -->
-              <path d="M125 58 C115 50 118 40 130 48 Z" fill="#F9BE36" stroke="#765137" stroke-width="1"/>
-              <path d="M165 52 C175 42 178 52 168 58 Z" fill="#F9BE36" stroke="#765137" stroke-width="1"/>
-
-              <!-- Horns (Ossicones) -->
-              <path d="M138 48 L134 26" stroke="#765137" stroke-width="3.5" stroke-linecap="round"/>
-              <circle cx="133" cy="25" r="4.5" fill="#765137"/>
-              <path d="M152 48 L154 26" stroke="#765137" stroke-width="3.5" stroke-linecap="round"/>
-              <circle cx="155" cy="25" r="4.5" fill="#765137"/>
-
-              <!-- Head Base -->
-              <path d="M125 60 C125 46 175 46 175 60 C175 75 168 85 158 92 C148 95 138 95 132 88 Z" fill="#F9BE36" stroke="#765137" stroke-width="1"/>
-              
-              <!-- Snout -->
-              <ellipse cx="160" cy="78" rx="18" ry="13" fill="#FFC6A5"/>
-              <circle cx="164" cy="74" r="2" fill="#765137"/>
-
-              <!-- Smiling or Chewing Mouth -->
-              <path 
-                [attr.d]="isMunching() ? 'M155 83 Q164 88 172 83' : 'M156 82 Q163 87 170 82'" 
-                stroke="#765137" 
-                stroke-width="2" 
-                stroke-linecap="round" 
-                fill="none"
-              />
-
-              <!-- Eye (Happy arc when munching) -->
-              @if (isMunching()) {
-                <path d="M136 60 Q142 54 148 60" stroke="#765137" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-              } @else {
-                <circle cx="142" cy="58" r="5" fill="#765137"/>
-                <circle cx="143" cy="56.5" r="1.5" fill="#FFFFFF"/>
-              }
-
-              <!-- Prehensile Bluish-Purple Tongue sticking out when munching -->
-              @if (isMunching()) {
-                <path 
-                  d="M172 82 C195 80 215 95 210 102 C205 108 190 92 170 86 Z" 
-                  fill="#4338CA" 
-                  stroke="#312E81" 
-                  stroke-width="1.5"
-                />
-              }
-
-            </g>
+          <svg viewBox="120 15 250 465" class="w-full h-full" role="img" aria-label="Luna estira el cuello para alcanzar las hojas de acacia">
+            <g app-giraffe-art [eating]="isMunching()" [headTilt]="isMunching() ? -4 : 0" />
           </svg>
         </div>
 

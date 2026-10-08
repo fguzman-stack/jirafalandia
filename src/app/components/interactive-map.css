@@ -1,0 +1,96 @@
+:host { display: block; }
+.safari-section { padding: 88px 20px; background: #fff9e8; color: #644d35; }
+.safari-container { max-width: 1180px; margin: auto; }
+.safari-intro { text-align: center; max-width: 740px; margin: 0 auto 38px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 900; letter-spacing: 2px; color: #688054; }
+.eyebrow mat-icon { font-size: 19px; width: 19px; height: 19px; }
+.safari-intro h2 { font-size: clamp(32px, 5vw, 54px); font-weight: 650; margin: 12px 0; letter-spacing: -1.5px; }
+.safari-intro p { line-height: 1.8; font-size: 16px; color: #84735c; }
+.park-shell { border: 1px solid #dfd4b4; border-radius: 28px; overflow: hidden; background: #fffdf5; box-shadow: 0 20px 65px #6a563516; }
+.park-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 17px 25px; border-bottom: 1px solid #e5dfca; gap: 12px; }
+.toolbar-title { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 850; }
+.live-dot { width: 7px; height: 7px; background: #78965c; border-radius: 50%; box-shadow: 0 0 0 4px #78965c17; }
+.visit-count { display: flex; align-items: center; gap: 6px; color: #8b795b; font-size: 12px; font-weight: 750; }
+.visit-count mat-icon { width: 17px; height: 17px; font-size: 17px; }
+.map-view, .habitat-view { position: relative; }
+.map-view { background: #edf0d8; }
+.map-caption, .scene-caption { position: absolute; top: 22px; left: 24px; padding: 9px 14px; background: #fffdf0df; border: 1px solid #ffffff80; border-radius: 8px; font-size: 10px; font-weight: 900; letter-spacing: 1.3px; }
+.map-pin { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; cursor: pointer; border: 0; background: none; padding: 0; color: #fffdf5; transition: translate .2s; }
+.pin-name { font-size: 11px; font-weight: 850; padding: 6px 12px; background: #5d654b; border: 2px solid #fff8e7; border-radius: 9px; white-space: nowrap; box-shadow: 0 4px 10px #3f412a20; }
+.pin-number { display: grid; place-items: center; width: 33px; height: 33px; margin-top: 5px; border-radius: 50%; background: var(--pin-color); border: 3px solid #fff9e8; font-size: 14px; font-weight: 900; text-shadow: 0 1px 3px #51351c; box-shadow: 0 3px 8px #4c3e3533; }
+.map-footer { padding: 17px 25px; display: flex; justify-content: space-between; gap: 12px; font-size: 12px; font-weight: 750; border-top: 1px solid #e5dfca; }
+.map-footer span { display: flex; align-items: center; gap: 7px; }
+.map-footer mat-icon { font-size: 18px; width: 18px; height: 18px; color: #7d9362; }
+.habitat-heading { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 24px; }
+.back-button { display: flex; align-items: center; gap: 6px; background: #f4efdf; border: 1px solid #ded3b7; padding: 10px 13px; border-radius: 10px; font-size: 12px; font-weight: 850; cursor: pointer; white-space: nowrap; }
+.back-button mat-icon { width: 16px; height: 16px; font-size: 16px; }
+.habitat-heading > div { flex: 1; }
+.habitat-kicker { font-size: 9px; font-weight: 900; letter-spacing: 1.8px; color: #8b9470; }
+.habitat-heading h3 { font-size: clamp(23px, 3vw, 34px); font-weight: 600; margin: 3px 0; }
+.habitat-heading p, .habitat-weather { font-size: 12px; color: #8b795f; }
+.scene-caption { font-size: 11px; letter-spacing: .3px; color: #64714f; }
+.animal-hotspot { position: absolute; border: 0; background: transparent; display: flex; align-items: center; gap: 6px; color: #624d37; cursor: pointer; transform: translate(-50%, -50%); padding: 6px; }
+.hotspot-plus { display: grid; place-items: center; width: 32px; height: 32px; border: 2px solid #fff8e6; border-radius: 50%; background: #fffdf2dd; font-size: 22px; font-weight: 700; box-shadow: 0 0 0 5px #fffdf230, 0 3px 10px #39433420; transition: scale .2s; }
+.animal-hotspot:hover .hotspot-plus, .animal-hotspot.active .hotspot-plus { background: #f4c663; scale: 1.1; }
+.animal-name { background: #fffdf2e8; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: 900; }
+.leaf-button { position: absolute; top: 40%; left: 28%; display: flex; align-items: center; gap: 5px; border: 2px solid #fffbe9; border-radius: 20px; background: #608052; color: #fffbe9; padding: 9px 13px; font-size: 11px; font-weight: 800; cursor: pointer; }
+.fed-bubble { position: absolute; top: 40%; left: 23%; background: #fff9e7; padding: 10px 14px; border-radius: 12px; display: flex; gap: 6px; align-items: center; font-size: 12px; font-weight: 800; color: #608052; animation: habitat-enter .35s ease-out; }
+.habitat-bottom { padding: 22px 25px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+.resident-note { display: flex; align-items: center; gap: 14px; max-width: 700px; flex: 1; }
+.note-icon { padding: 12px; display: grid; place-items: center; border-radius: 14px; background: #edf0df; color: #6c8454; }
+.small-label { font-size: 9px; letter-spacing: 1.5px; font-weight: 900; color: #8c9770; }
+.resident-note h4 { font-size: 15px; font-weight: 850; margin: 4px 0; }
+.resident-note p { font-size: 12px; line-height: 1.7; color: #897a63; }
+.zone-action { min-width: 220px; display: flex; flex-direction: column; gap: 10px; }
+.discovered { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 800; color: #6c8454; }
+.discovered mat-icon { width: 16px; height: 16px; font-size: 16px; }
+.zone-action a { display: flex; justify-content: space-between; align-items: center; gap: 9px; text-decoration: none; padding: 11px 13px; border-radius: 10px; background: #f5cc76; font-size: 11px; font-weight: 850; }
+.zone-navigation { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; padding: 18px; background: #f5f1e5; border-top: 1px solid #dfd4b4; }
+.zone-navigation button { text-align: left; background: #fffdf5; border: 1px solid #dfd8bf; border-radius: 14px; overflow: hidden; cursor: pointer; transition: box-shadow .2s, transform .2s; position: relative; }
+.zone-navigation button.selected { border-color: #708657; box-shadow: 0 0 0 2px #708657; }
+.zone-thumb { display: block; aspect-ratio: 2.1; overflow: hidden; }
+.zone-thumb app-habitat-scene { display: block; transform: translateY(-7%); }
+.zone-nav-text { padding: 10px 12px 12px; display: block; }
+.zone-nav-number { display: block; font-size: 8px; font-weight: 900; letter-spacing: 1px; color: #8e9471; margin-bottom: 4px; }
+.zone-nav-text strong { font-size: 11px; display: block; font-weight: 850; padding-right: 12px; }
+.zone-navigation button > mat-icon { position: absolute; right: 9px; bottom: 15px; width: 13px; height: 13px; font-size: 13px; color: #8e9471; }
+.park-footnote { display: flex; justify-content: center; align-items: center; gap: 7px; font-size: 11px; color: #94866b; text-align: center; margin-top: 22px; }
+.park-footnote mat-icon { width: 16px; height: 16px; font-size: 16px; flex-shrink: 0; }
+button:focus-visible, a:focus-visible { outline: 3px solid #a7762f; outline-offset: 4px; }
+@keyframes habitat-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 800px) {
+  .habitat-heading { flex-wrap: wrap; gap: 12px; padding: 18px; }
+  .habitat-heading > div { flex-basis: 65%; }
+  .habitat-weather { display: none; }
+  .habitat-bottom { flex-direction: column; align-items: stretch; padding: 18px; }
+  .zone-action { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .zone-navigation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .safari-section { padding: 60px 12px; }
+  .park-shell { border-radius: 19px; }
+  .park-toolbar { padding: 14px; }
+  .toolbar-title, .visit-count { font-size: 10px; }
+  .visit-count mat-icon, .desktop-break { display: none; }
+  .map-caption { top: 9px; left: 10px; font-size: 7px; padding: 5px 7px; letter-spacing: .5px; }
+  .pin-name { display: none; }
+  .pin-number { width: 30px; height: 30px; font-size: 11px; }
+  .map-pin { padding: 7px; }
+  .map-footer { padding: 13px; font-size: 10px; }
+  .map-footer > span:last-child { display: none; }
+  .habitat-heading > div { flex-basis: 100%; }
+  .habitat-heading h3 { font-size: 28px; }
+  .scene-caption { top: 7px; left: 9px; font-size: 8px; padding: 5px 8px; }
+  .hotspot-plus { width: 27px; height: 27px; font-size: 19px; }
+  .animal-name { font-size: 9px; padding: 3px 5px; }
+  .animal-hotspot { min-width: 44px; min-height: 44px; }
+  .leaf-button { left: 15%; top: 43%; padding: 5px 8px; font-size: 9px; }
+  .leaf-button mat-icon { font-size: 16px; width: 16px; height: 16px; }
+  .fed-bubble { left: 15%; font-size: 9px; padding: 6px 8px; }
+  .note-icon { display: none; }
+  .zone-navigation { gap: 8px; padding: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .zone-navigation button:last-child { grid-column: span 2; display: flex; align-items: center; }
+  .zone-navigation button:last-child .zone-thumb { width: 42%; }
+  .zone-nav-text strong { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

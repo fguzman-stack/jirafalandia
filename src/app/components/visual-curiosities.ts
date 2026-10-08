@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { GiraffeArt } from './svg/giraffe-art';
 import { GiraffeData } from '../services/giraffe-data';
 import { Sound } from '../services/sound';
 import { Album } from '../services/album';
@@ -7,7 +8,7 @@ import { Album } from '../services/album';
 @Component({
   selector: 'app-visual-curiosities',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, GiraffeArt],
   template: `
     <section id="curiosidades" class="py-20 bg-[#FFF9E8] relative overflow-hidden">
       
@@ -83,7 +84,7 @@ import { Album } from '../services/album';
             <!-- Visual Height Chart SVG -->
             <div class="lg:col-span-7 bg-[#FFF9E8] rounded-2xl border border-[#F9BE36]/30 p-4 sm:p-6 flex flex-col justify-end min-h-[360px]">
               <div class="relative w-full h-[320px]">
-                <svg viewBox="0 0 500 320" class="w-full h-full">
+                <svg viewBox="0 0 500 320" class="w-full h-full" role="img" aria-label="Compara la altura de una jirafa de 5,8 metros con una persona y un autobús de dos pisos">
                   
                   <!-- Measurement Lines & Height Grid -->
                   <line x1="50" y1="20" x2="480" y2="20" stroke="#765137" stroke-dasharray="4,4" opacity="0.25"/>
@@ -136,29 +137,8 @@ import { Album } from '../services/album';
                   }
 
                   <!-- Giraffe Figure (5.8m) -->
-                  <g transform="translate(360, 20)">
-                    <!-- Body -->
-                    <ellipse cx="60" cy="210" rx="36" ry="24" fill="#F9BE36"/>
-                    <!-- Legs -->
-                    <line x1="38" y1="225" x2="35" y2="280" stroke="#F9BE36" stroke-width="8" stroke-linecap="round"/>
-                    <line x1="52" y1="225" x2="49" y2="280" stroke="#F9BE36" stroke-width="7" stroke-linecap="round"/>
-                    <line x1="72" y1="225" x2="70" y2="280" stroke="#F9BE36" stroke-width="8" stroke-linecap="round"/>
-                    <line x1="84" y1="225" x2="82" y2="280" stroke="#F9BE36" stroke-width="7" stroke-linecap="round"/>
-                    <!-- Long Neck -->
-                    <path d="M48 200 C45 130 52 60 55 20 L75 22 C72 60 68 130 75 200 Z" fill="#F9BE36"/>
-                    <!-- Head & Horns -->
-                    <ellipse cx="62" cy="14" rx="14" ry="10" fill="#F9BE36"/>
-                    <ellipse cx="72" cy="16" rx="8" ry="6" fill="#FFC6A5"/>
-                    <circle cx="58" cy="4" r="3" fill="#765137"/>
-                    <circle cx="66" cy="4" r="3" fill="#765137"/>
-                    <!-- Spots -->
-                    <rect x="52" y="50" width="14" height="12" rx="3" fill="#765137"/>
-                    <rect x="54" y="80" width="14" height="15" rx="4" fill="#765137"/>
-                    <rect x="52" y="115" width="16" height="14" rx="4" fill="#765137"/>
-                    <rect x="53" y="150" width="16" height="16" rx="4" fill="#765137"/>
-                    <!-- Label -->
-                    <text x="60" y="295" font-family="'Fredoka', sans-serif" font-size="12" font-weight="bold" fill="#765137" text-anchor="middle">Jirafa Macho (5.8 m)</text>
-                  </g>
+                  <g app-giraffe-art transform="translate(280 -3) scale(.65)" />
+                  <text x="413" y="315" font-family="'Fredoka', sans-serif" font-size="12" font-weight="bold" fill="#765137" text-anchor="middle">Jirafa (5.8 m)</text>
 
                 </svg>
               </div>

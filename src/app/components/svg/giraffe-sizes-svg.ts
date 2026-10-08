@@ -1,89 +1,46 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GiraffeCalfSvg } from './giraffe-calf-svg';
-import { GiraffeRothschildSvg } from './giraffe-rothschild-svg';
-import { GiraffeMasaiSvg } from './giraffe-masai-svg';
-import { GiraffeReticulataSvg } from './giraffe-reticulata-svg';
+import { GiraffeArt, GiraffeCoat } from './giraffe-art';
 
 @Component({
   selector: 'app-giraffe-sizes-svg',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    GiraffeCalfSvg,
-    GiraffeRothschildSvg,
-    GiraffeMasaiSvg,
-    GiraffeReticulataSvg
-  ],
+  imports: [GiraffeArt],
   template: `
-<div class="w-full bg-gradient-to-b from-[#FFFDF8] to-[#FBF1DC] rounded-3xl p-6 sm:p-8 border border-[#EFE1C6] shadow-md flex flex-col items-center">
-  <div class="text-center mb-6">
-    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-[#6B4C26]">Todos los Tamaños</h3>
-    <p class="text-xs sm:text-sm text-[#AE9060] font-accent">De cría recién nacida a macho adulto dominante</p>
-  </div>
-
-  <!-- Scale Comparison Line -->
-  <div class="w-full flex items-end justify-between sm:justify-around gap-2 pt-6 pb-2 border-b-2 border-dashed border-[#E2C48D] min-h-[360px] sm:min-h-[440px]">
-    
-    <!-- XS: Cría (150px) -->
-    <div class="flex flex-col items-center group">
-      <div class="w-20 sm:w-28 h-36 sm:h-44 transition-transform group-hover:scale-105">
-        <app-giraffe-calf-svg />
-      </div>
-      <div class="mt-2 text-center">
-        <span class="block text-xs sm:text-sm font-extrabold text-[#8A6A3B]">XS</span>
-        <span class="text-[10px] sm:text-xs text-[#8A6A3B]/70">Cría · 1.8 m</span>
-      </div>
+    <div class="size-guide">
+      <header><span>DEL PRIMER PASO A LAS COPAS DE LOS ÁRBOLES</span><h3>Crecer a lo grande</h3><p>Una misma línea de suelo. Cinco momentos de una vida de altura.</p></header>
+      <svg class="size-lineup" viewBox="0 0 1200 490" role="img" aria-label="Comparación proporcional: cría de 1,8 metros, juvenil de 3,2, hembra de 4,3, adulto de 5,1 y macho de 5,8 metros">
+        @for (y of [72, 145, 218, 291, 364]; track y) { <path [attr.d]="'M10 ' + y + ' H1190'" stroke="#ece6d5" fill="none" /> }
+        <path d="M10 422 H1190" stroke="#d7bf85" stroke-width="2" />
+        @for (animal of animals; track animal.label; let i = $index) {
+          <g app-giraffe-art [coat]="animal.coat" [calf]="animal.label === 'Cría'" [attr.transform]="animalTransform(i, animal.height)" />
+          <text [attr.x]="110 + i * 230" y="452" text-anchor="middle" fill="#644d35" font-size="17" font-weight="800">{{ animal.height }} m</text>
+          <text [attr.x]="110 + i * 230" y="473" text-anchor="middle" fill="#8c795e" font-size="13">{{ animal.label }}</text>
+        }
+      </svg>
+      <p class="scale-note">Estaturas orientativas · Las jirafas adultas pueden superar los 5 metros.</p>
     </div>
-
-    <!-- S: Joven / Rothschild (215px) -->
-    <div class="flex flex-col items-center group">
-      <div class="w-24 sm:w-36 h-48 sm:h-56 transition-transform group-hover:scale-105">
-        <app-giraffe-rothschild-svg />
-      </div>
-      <div class="mt-2 text-center">
-        <span class="block text-xs sm:text-sm font-extrabold text-[#8A6A3B]">S</span>
-        <span class="text-[10px] sm:text-xs text-[#8A6A3B]/70">Juvenil · 3.2 m</span>
-      </div>
-    </div>
-
-    <!-- M: Hembra / Masái (290px) -->
-    <div class="flex flex-col items-center group">
-      <div class="w-28 sm:w-44 h-60 sm:h-72 transition-transform group-hover:scale-105">
-        <app-giraffe-masai-svg />
-      </div>
-      <div class="mt-2 text-center">
-        <span class="block text-xs sm:text-sm font-extrabold text-[#8A6A3B]">M</span>
-        <span class="text-[10px] sm:text-xs text-[#8A6A3B]/70">Hembra · 4.3 m</span>
-      </div>
-    </div>
-
-    <!-- L: Macho joven (370px) -->
-    <div class="flex flex-col items-center group hidden md:flex">
-      <div class="w-36 sm:w-52 h-72 sm:h-84 transition-transform group-hover:scale-105">
-        <app-giraffe-reticulata-svg />
-      </div>
-      <div class="mt-2 text-center">
-        <span class="block text-xs sm:text-sm font-extrabold text-[#8A6A3B]">L</span>
-        <span class="text-[10px] sm:text-xs text-[#8A6A3B]/70">Adulto · 5.1 m</span>
-      </div>
-    </div>
-
-    <!-- XL: Macho adulto dominante (470px) -->
-    <div class="flex flex-col items-center group">
-      <div class="w-36 sm:w-60 h-80 sm:h-96 transition-transform group-hover:scale-105">
-        <app-giraffe-reticulata-svg />
-      </div>
-      <div class="mt-2 text-center">
-        <span class="block text-xs sm:text-sm font-extrabold text-[#8A6A3B]">XL</span>
-        <span class="text-[10px] sm:text-xs text-[#8A6A3B]/70">Macho Máx · 5.8 m</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="mt-4 text-[11px] text-[#AE9060] italic text-center">
-    *Guía proporcional de estaturas naturales desde el suelo de la sabana hasta los osicones.
-  </div>
-</div>
-  `
+  `,
+  styles: [`
+    .size-guide { padding: 28px 24px; border: 1px solid #ddd0b3; border-radius: 24px; background: #fffdf5; color: #644d35; }
+    header { text-align: center; } header > span { font-size: 9px; letter-spacing: 2px; color: #8e9672; font-weight: 900; }
+    h3 { font-size: 30px; margin: 8px 0; font-weight: 600; } header p, .scale-note { color: #8c795e; font-size: 12px; }
+    .size-lineup { display: block; width: 100%; height: auto; margin-top: 28px; }
+    .scale-note { text-align: center; margin-top: 22px; }
+    @media (max-width: 600px) { .size-guide { padding: 20px 10px; } .size-lineup { margin-top: 20px; } h3 { font-size: 25px; } header > span { font-size: 7px; letter-spacing: 1px; } }
+  `]
 })
-export class GiraffeSizesSvg {}
+export class GiraffeSizesSvg {
+  animalTransform(index: number, height: number): string {
+    const scale = height / 5.8 * .92;
+    const x = 110 + index * 230 - 175 * scale;
+    const y = 422 - (index === 0 ? 464 : 466) * scale;
+    return `translate(${x} ${y}) scale(${scale})`;
+  }
+  readonly animals: { label: string; height: number; coat: GiraffeCoat }[] = [
+    { label: 'Cría', height: 1.8, coat: 'northern' },
+    { label: 'Juvenil', height: 3.2, coat: 'northern' },
+    { label: 'Hembra', height: 4.3, coat: 'masai' },
+    { label: 'Adulto', height: 5.1, coat: 'southern' },
+    { label: 'Macho', height: 5.8, coat: 'reticulated' }
+  ];
+}

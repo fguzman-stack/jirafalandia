@@ -199,7 +199,6 @@ export class GiraffeData {
       residents: ['Jirafa Masái', 'Jirafa del Sur'],
       activityTitle: 'Exploración de pastizales',
       activityTip: 'Fíjate en cómo caminan: mueven las dos patas de un lado y luego las del otro (paso de ambladura).',
-      stickerId: 'primer-saludo',
       x: 28,
       y: 46
     },
@@ -207,7 +206,7 @@ export class GiraffeData {
       id: 'bosque-acacias',
       name: 'Bosque de Acacias',
       subtitle: 'El comedor más alto del mundo',
-      description: 'Un denso palmeral de acacias sombrilla rebosante de hojas tiernas. Aquí se reúnen las jirafas más glotonas para alcanzar las copas más altas.',
+      description: 'Un bosque de acacias sombrilla rebosante de hojas tiernas. Aquí se reúnen las jirafas más glotonas para alcanzar las copas más altas.',
       atmosphere: 'Sombra refrescante, aroma a flores de acacia y masticar de ramas tiernas.',
       icon: 'forest',
       color: '#557A55',
@@ -216,7 +215,6 @@ export class GiraffeData {
       residents: ['Jirafa Reticulada', 'Jirafa del Norte'],
       activityTitle: 'Festín en las alturas',
       activityTip: '¡Visita el minijuego de alimentar a la jirafa para darles un tentempié de hojas!',
-      stickerId: 'amante-acacias',
       x: 68,
       y: 32
     },
@@ -250,7 +248,6 @@ export class GiraffeData {
       residents: ['Muestrario de las 4 especies'],
       activityTitle: 'Laboratorio de patrones',
       activityTip: 'Pon a prueba tus ojos en el minijuego de descubrir manchas más abajo.',
-      stickerId: 'maestro-manchas',
       x: 75,
       y: 68
     },

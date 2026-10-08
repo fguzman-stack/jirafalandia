@@ -6,7 +6,8 @@ import { Album } from '../services/album';
 import { GiraffeReticulataSvg } from './svg/giraffe-reticulata-svg';
 import { GiraffeMasaiSvg } from './svg/giraffe-masai-svg';
 import { GiraffeRothschildSvg } from './svg/giraffe-rothschild-svg';
-import { GiraffeCalfSvg } from './svg/giraffe-calf-svg';
+import { GiraffeArt } from './svg/giraffe-art';
+import { CoatSwatch } from './svg/coat-swatch';
 
 @Component({
   selector: 'app-giraffes-gallery',
@@ -16,7 +17,8 @@ import { GiraffeCalfSvg } from './svg/giraffe-calf-svg';
     GiraffeReticulataSvg,
     GiraffeMasaiSvg,
     GiraffeRothschildSvg,
-    GiraffeCalfSvg
+    GiraffeArt,
+    CoatSwatch
   ],
   template: `
     <section id="jirafas" class="py-20 bg-[#FFFDF5] relative overflow-hidden">
@@ -86,42 +88,7 @@ import { GiraffeCalfSvg } from './svg/giraffe-calf-svg';
                 <div class="p-3 rounded-2xl bg-[#FFFDF5] border border-[#F9BE36]/30 flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-black/10">
                     <!-- SVG Pattern Swatch -->
-                    @switch (sp.patternSvgType) {
-                      @case ('reticulated') {
-                        <svg viewBox="0 0 40 40" class="w-full h-full bg-[#FFF9E8]">
-                          <polygon points="4,4 18,4 16,18 4,16" fill="#C2410C"/>
-                          <polygon points="22,4 36,4 36,18 20,18" fill="#B45309"/>
-                          <polygon points="4,22 18,22 16,36 4,36" fill="#9A3412"/>
-                          <polygon points="22,22 36,22 36,36 20,36" fill="#C2410C"/>
-                        </svg>
-                      }
-                      @case ('masai') {
-                        <svg viewBox="0 0 40 40" class="w-full h-full bg-[#FFF9E8]">
-                          <!-- Jagged oak leaf spots -->
-                          <path d="M5 8 L12 4 L18 8 L15 15 L8 16 Z" fill="#78350F"/>
-                          <path d="M22 6 L32 2 L36 10 L30 18 L24 14 Z" fill="#451A03"/>
-                          <path d="M4 24 L14 20 L16 32 L8 36 L2 30 Z" fill="#78350F"/>
-                          <path d="M24 24 L34 22 L36 34 L28 36 L22 30 Z" fill="#451A03"/>
-                        </svg>
-                      }
-                      @case ('northern') {
-                        <svg viewBox="0 0 40 40" class="w-full h-full bg-[#FFFDF5]">
-                          <rect x="4" y="4" width="14" height="12" rx="4" fill="#B45309"/>
-                          <rect x="22" y="5" width="14" height="13" rx="4" fill="#92400E"/>
-                          <!-- Legs white without spots -->
-                          <rect x="0" y="24" width="40" height="16" fill="#FFFFFF"/>
-                          <circle cx="10" cy="28" r="3" fill="#D97706" opacity="0.4"/>
-                        </svg>
-                      }
-                      @case ('southern') {
-                        <svg viewBox="0 0 40 40" class="w-full h-full bg-[#FFFDF5]">
-                          <ellipse cx="10" cy="10" rx="6" ry="5" fill="#4D7C0F"/>
-                          <ellipse cx="28" cy="12" rx="7" ry="6" fill="#365314"/>
-                          <ellipse cx="12" cy="28" rx="6" ry="6" fill="#365314"/>
-                          <ellipse cx="28" cy="28" rx="5" ry="5" fill="#4D7C0F"/>
-                        </svg>
-                      }
-                    }
+                    <app-coat-swatch [pattern]="sp.patternSvgType" />
                   </div>
                   <div class="text-[11px] leading-tight text-[#765137]/80">
                     <span class="font-bold text-[#765137] block">Diseño de mancha</span>
@@ -222,13 +189,13 @@ import { GiraffeCalfSvg } from './svg/giraffe-calf-svg';
                         <app-giraffe-rothschild-svg />
                       }
                       @case ('southern') {
-                        <app-giraffe-masai-svg />
+                        <svg viewBox="25 20 330 465" class="w-full h-full" role="img" aria-label="Jirafa del sur con manchas marrones hasta las patas"><g app-giraffe-art coat="southern" /></svg>
                       }
                     }
                   </div>
                   <div class="absolute bottom-3 left-4 right-4 bg-white/80 backdrop-blur-xs rounded-xl p-2 flex items-center justify-between text-xs text-[#765137] border border-[#F9BE36]/30">
-                    <span class="font-bold">Ilustración Vectorial Original 100% SVG</span>
-                    <span class="text-[#D97706] italic">Teselación anatómica nativa</span>
+                    <span class="font-bold">Un encuentro de cerca</span>
+                    <span class="text-[#D97706] italic">Observa su silueta y su pelaje</span>
                   </div>
                 </div>
               }

@@ -3,11 +3,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { GiraffeData, GiraffeSpecies } from '../services/giraffe-data';
 import { Sound } from '../services/sound';
 import { Album } from '../services/album';
+import { HabitatScene } from './svg/habitat-scene';
 
 @Component({
   selector: 'app-africa-map',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, HabitatScene],
   template: `
     <section id="donde-viven" class="py-20 bg-[#FFF9E8] relative overflow-hidden">
       
@@ -79,6 +80,8 @@ import { Album } from '../services/album';
               <svg 
                 viewBox="0 0 500 620" 
                 class="w-full h-full relative z-10 select-none"
+                role="img"
+                [attr.aria-label]="'Mapa de África con el hábitat aproximado de ' + selectedSpecies().commonName"
               >
                 <defs>
                   <filter id="africaShadow" x="-10%" y="-10%" width="120%" height="120%">
@@ -109,29 +112,18 @@ import { Album } from '../services/album';
 
                 <!-- Base Continent Outline in Sand/Cream tones -->
                 <path 
-                  d="M 120 70 
-                     C 180 50, 290 50, 360 80
-                     C 380 90, 420 140, 410 180
-                     C 430 200, 460 230, 440 270
-                     C 410 300, 390 320, 395 360
-                     C 400 410, 370 470, 330 520
-                     C 300 560, 260 590, 240 590
-                     C 220 590, 190 540, 180 490
-                     C 170 450, 190 400, 180 360
-                     C 160 330, 120 330, 80 290
-                     C 50 250, 50 190, 70 150
-                     C 80 110, 100 80, 120 70 Z" 
-                  fill="#FFF1A8" 
-                  stroke="#E2CE9C" 
-                  stroke-width="5"
+                  d="M87 99 L109 72 L158 58 L193 55 L212 73 L239 78 L250 102 L286 102 L308 87 L345 91 L360 143 L375 182 L391 219 L417 241 L459 225 L453 252 L422 283 L400 312 L373 337 L377 368 L367 397 L368 429 L351 458 L339 502 L316 539 L291 565 L266 585 L243 581 L226 555 L210 517 L201 479 L185 448 L181 413 L184 383 L169 352 L174 326 L162 306 L130 299 L106 312 L83 301 L65 276 L48 263 L40 236 L48 202 L63 181 L68 149 Z" 
+                  fill="#ead9aa" 
+                  stroke="#baaa7b" 
+                  stroke-width="2.5"
                   filter="url(#africaShadow)"
                 />
 
                 <!-- Madagascar Island -->
                 <path 
-                  d="M 430 400 C 445 420, 435 480, 415 510 C 405 500, 415 440, 430 400 Z" 
-                  fill="#FFF1A8" 
-                  stroke="#E2CE9C" 
+                  d="M440 404 L449 425 L445 447 L433 473 L420 498 L411 490 L417 461 L421 437 Z" 
+                  fill="#ead9aa" 
+                  stroke="#baaa7b" 
                   stroke-width="3"
                 />
 
@@ -144,7 +136,10 @@ import { Album } from '../services/album';
                 />
                 
                 <!-- Central Equatorial Forest -->
-                <ellipse cx="230" cy="320" rx="60" ry="35" fill="#E8F3E5" opacity="0.7"/>
+                <path d="M183 288 Q228 263 285 291 L312 338 Q286 381 229 369 L193 344 Z" fill="#a7ba8b" opacity="0.6"/>
+                <path d="M324 150 Q309 201 320 254 M300 296 Q324 328 310 384 M199 413 Q263 433 310 403" fill="none" stroke="#fff4d4" stroke-width="2" stroke-dasharray="5 5"/>
+                <path d="M322 328 Q332 313 340 329 L334 349 Z M325 367 Q335 351 339 372 L334 393 Z" fill="#8eb9af"/>
+                <g fill="#c4a56d" opacity=".65"><path d="M140 149 l10 -16 10 16 Z M161 152 l9 -12 9 12 Z M235 177 l12 -16 12 16 Z"/></g>
 
                 <!-- ============================================== -->
                 <!-- DYNAMIC DISTRIBUTION ZONES ACCORDING TO SPECIES -->
@@ -232,6 +227,9 @@ import { Album } from '../services/album';
 
           <!-- Right: Species Regional Details Card -->
           <div class="lg:col-span-5 space-y-6">
+            <div class="rounded-2xl overflow-hidden border border-[#d9cbaa] shadow-sm">
+              <app-habitat-scene [zone]="selectedSpecies().id === 'reticulata' || selectedSpecies().id === 'camelopardalis' ? 'bosque-acacias' : 'sabana-dorada'" [label]="'Paisaje ilustrado del hábitat de ' + selectedSpecies().commonName" />
+            </div>
             
             <div class="space-y-2">
               <span class="px-3 py-1 rounded-full text-xs font-bold border {{ selectedSpecies().statusColor }}">

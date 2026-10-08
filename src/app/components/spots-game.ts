@@ -3,13 +3,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { GiraffeData, SpotPatternQuizItem } from '../services/giraffe-data';
 import { Sound } from '../services/sound';
 import { Album } from '../services/album';
+import { CoatSwatch } from './svg/coat-swatch';
 
 @Component({
   selector: 'app-spots-game',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, CoatSwatch],
   template: `
-    <div class="bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+    <div id="juego-manchas" class="bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
       
       <!-- Header -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#F9BE36]/30">
@@ -46,50 +47,7 @@ import { Album } from '../services/album';
             
             <!-- Large Illustrated Pattern Tile -->
             <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-3 border-[#765137]/20 shadow-md shrink-0 bg-white">
-              @switch (currentQuestion().patternType) {
-                @case ('reticulated') {
-                  <svg viewBox="0 0 100 100" class="w-full h-full bg-[#FFF9E8]">
-                    <!-- Sharp geometric polygons separated by white net -->
-                    <polygon points="10,10 42,8 38,42 8,36" fill="#C2410C"/>
-                    <polygon points="48,8 90,12 88,44 44,42" fill="#B45309"/>
-                    <polygon points="8,48 40,48 36,90 12,88" fill="#9A3412"/>
-                    <polygon points="46,48 88,50 85,88 44,88" fill="#C2410C"/>
-                    <!-- Crisp white grid separation -->
-                    <line x1="0" y1="45" x2="100" y2="45" stroke="#FFFDF5" stroke-width="4"/>
-                    <line x1="43" y1="0" x2="43" y2="100" stroke="#FFFDF5" stroke-width="4"/>
-                  </svg>
-                }
-                @case ('masai') {
-                  <svg viewBox="0 0 100 100" class="w-full h-full bg-[#FFF9E8]">
-                    <!-- Jagged dark oak leaf edges -->
-                    <path d="M12 18 L24 8 L38 14 L34 32 L20 38 L14 30 Z" fill="#78350F"/>
-                    <path d="M50 12 L72 6 L86 22 L70 38 L54 30 Z" fill="#451A03"/>
-                    <path d="M10 54 L32 46 L38 72 L22 84 L6 70 Z" fill="#78350F"/>
-                    <path d="M54 52 L82 46 L88 78 L68 86 L50 68 Z" fill="#451A03"/>
-                  </svg>
-                }
-                @case ('northern') {
-                  <svg viewBox="0 0 100 100" class="w-full h-full bg-[#FFFDF5]">
-                    <!-- Soft rectangles with clean white background below -->
-                    <rect x="10" y="10" width="32" height="28" rx="8" fill="#B45309"/>
-                    <rect x="52" y="12" width="36" height="30" rx="8" fill="#92400E"/>
-                    <!-- Clean white bottom area representing pristine legs -->
-                    <rect x="0" y="55" width="100" height="45" fill="#FFFFFF"/>
-                    <circle cx="25" cy="70" r="6" fill="#D97706" opacity="0.3"/>
-                    <circle cx="75" cy="75" r="7" fill="#B45309" opacity="0.3"/>
-                  </svg>
-                }
-                @case ('southern') {
-                  <svg viewBox="0 0 100 100" class="w-full h-full bg-[#FFFDF5]">
-                    <!-- Mottled spots extending everywhere -->
-                    <ellipse cx="25" cy="22" rx="16" ry="14" fill="#4D7C0F"/>
-                    <ellipse cx="70" cy="25" rx="18" ry="14" fill="#365314"/>
-                    <ellipse cx="30" cy="65" rx="15" ry="16" fill="#365314"/>
-                    <ellipse cx="75" cy="70" rx="14" ry="14" fill="#4D7C0F"/>
-                    <circle cx="50" cy="46" r="8" fill="#4D7C0F" opacity="0.8"/>
-                  </svg>
-                }
-              }
+              <app-coat-swatch [pattern]="currentQuestion().patternType" />
             </div>
 
             <!-- Hint & Description -->

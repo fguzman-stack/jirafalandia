@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { MatIconModule } from '@angular/material/icon';
 import { Sound } from '../services/sound';
 import { Album } from '../services/album';
+import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
 
 @Component({
   selector: 'app-hero',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule],
+  imports: [MatIconModule, GiraffePortraitSvg],
   template: `
     <section 
       id="inicio"
@@ -127,7 +128,6 @@ import { Album } from '../services/album';
             <button
               type="button"
               (click)="onGiraffeClick()"
-              (keydown.enter)="onGiraffeClick()"
               class="w-full max-w-md h-[460px] sm:h-[500px] relative rounded-3xl bg-gradient-to-b from-[#FFFDF5] via-[#FFF9E8] to-[#FFF1A8] border-3 border-[#F9BE36]/60 shadow-xl overflow-hidden cursor-pointer group select-none transition-transform hover:scale-[1.01] text-left focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
               title="¡Haz clic en Luna para saludarla!"
               aria-label="Interactuar con Luna la jirafa"
@@ -135,123 +135,9 @@ import { Album } from '../services/album';
               <!-- Sun ray backdrop in frame -->
               <div class="absolute top-8 right-8 w-28 h-28 rounded-full bg-[#FFD54F]/30 blur-xl pointer-events-none"></div>
               
-              <!-- Subtle Acacia branch overhang -->
-              <div class="absolute top-0 right-0 w-36 h-28 pointer-events-none opacity-80">
-                <svg viewBox="0 0 120 100" fill="none">
-                  <path d="M120 0 Q80 20 50 35 Q30 45 10 50" stroke="#765137" stroke-width="4" stroke-linecap="round"/>
-                  <!-- Acacia leaves clusters -->
-                  <ellipse cx="60" cy="25" rx="14" ry="7" fill="#557A55" transform="rotate(-15 60 25)"/>
-                  <ellipse cx="40" cy="35" rx="15" ry="8" fill="#A7C99A" transform="rotate(10 40 35)"/>
-                  <ellipse cx="20" cy="45" rx="12" ry="6" fill="#557A55" transform="rotate(-5 20 45)"/>
-                  <ellipse cx="75" cy="18" rx="16" ry="8" fill="#557A55" transform="rotate(20 75 18)"/>
-                </svg>
-              </div>
-
               <!-- Interactive Giraffe SVG -->
               <div class="absolute inset-0 flex items-end justify-center pb-2 pointer-events-none">
-                <svg 
-                  viewBox="0 0 360 480" 
-                  class="w-full h-full max-h-[460px] transition-transform duration-300 group-hover:scale-102"
-                >
-                  <!-- Ground Savannah Mound -->
-                  <ellipse cx="180" cy="470" rx="160" ry="30" fill="#A7C99A" opacity="0.6"/>
-                  <ellipse cx="180" cy="475" rx="130" ry="20" fill="#557A55" opacity="0.4"/>
-
-                  <!-- Giraffe Body & Shoulders -->
-                  <path 
-                    d="M100 480 C110 390 130 340 160 320 C180 320 200 340 220 390 C230 430 240 480 240 480 Z" 
-                    fill="#F9BE36"
-                  />
-                  <!-- Chest Pattern Spots -->
-                  <rect x="150" y="360" width="24" height="20" rx="8" fill="#765137" opacity="0.85"/>
-                  <rect x="185" y="380" width="22" height="24" rx="7" fill="#765137" opacity="0.85"/>
-                  <rect x="135" y="410" width="20" height="22" rx="7" fill="#765137" opacity="0.85"/>
-                  <rect x="175" y="425" width="28" height="20" rx="8" fill="#765137" opacity="0.85"/>
-
-                  <!-- Long Elegant Neck -->
-                  <path 
-                    d="M160 330 C162 250 166 180 170 120 L210 120 C214 180 218 250 220 330 Z" 
-                    fill="#F9BE36"
-                  />
-                  
-                  <!-- Neck spots -->
-                  <rect x="172" y="140" width="18" height="20" rx="6" fill="#765137" opacity="0.85"/>
-                  <rect x="176" y="175" width="22" height="22" rx="7" fill="#765137" opacity="0.85"/>
-                  <rect x="171" y="215" width="20" height="24" rx="7" fill="#765137" opacity="0.85"/>
-                  <rect x="180" y="255" width="24" height="22" rx="7" fill="#765137" opacity="0.85"/>
-                  <rect x="168" y="290" width="22" height="22" rx="7" fill="#765137" opacity="0.85"/>
-
-                  <!-- Mane along neck back -->
-                  <path 
-                    d="M165 120 C162 170 160 230 158 310" 
-                    stroke="#765137" 
-                    stroke-width="5" 
-                    stroke-dasharray="6,4"
-                  />
-
-                  <!-- Head (Tiltable with mouse interaction) -->
-                  <g [attr.transform]="'rotate(' + headAngle() + ', 190, 110)'">
-                    
-                    <!-- Ears (Left & Right with twitch animation) -->
-                    <g class="animate-ear">
-                      <path d="M142 85 C122 75 125 58 145 72 Z" fill="#F9BE36" stroke="#765137" stroke-width="1.5"/>
-                      <path d="M140 82 C127 75 129 64 142 74 Z" fill="#FFC6A5"/>
-                    </g>
-                    <g class="animate-ear" style="animation-delay: 0.8s;">
-                      <path d="M238 85 C258 75 255 58 235 72 Z" fill="#F9BE36" stroke="#765137" stroke-width="1.5"/>
-                      <path d="M240 82 C253 75 251 64 238 74 Z" fill="#FFC6A5"/>
-                    </g>
-
-                    <!-- Ossicones (Horns with rounded tufts) -->
-                    <!-- Left horn -->
-                    <path d="M174 72 L168 40" stroke="#765137" stroke-width="5" stroke-linecap="round"/>
-                    <circle cx="167" cy="38" r="7" fill="#765137"/>
-                    <circle cx="166" cy="36" r="2" fill="#F9BE36"/>
-                    <!-- Right horn -->
-                    <path d="M206 72 L212 40" stroke="#765137" stroke-width="5" stroke-linecap="round"/>
-                    <circle cx="213" cy="38" r="7" fill="#765137"/>
-                    <circle cx="214" cy="36" r="2" fill="#F9BE36"/>
-
-                    <!-- Main Head Shape -->
-                    <path 
-                      d="M155 90 C155 72 225 72 225 90 C225 105 215 120 205 130 C195 138 185 138 175 130 C165 120 155 105 155 90 Z" 
-                      fill="#F9BE36" 
-                      stroke="#765137" 
-                      stroke-width="1"
-                    />
-
-                    <!-- Soft Cheeks -->
-                    <circle cx="163" cy="102" r="7" fill="#FFC6A5" opacity="0.6"/>
-                    <circle cx="217" cy="102" r="7" fill="#FFC6A5" opacity="0.6"/>
-
-                    <!-- Snout & Mouth Area -->
-                    <ellipse cx="190" cy="128" rx="22" ry="16" fill="#FFC6A5"/>
-                    <!-- Nostrils -->
-                    <ellipse cx="182" cy="124" rx="2.5" ry="3.5" fill="#765137"/>
-                    <ellipse cx="198" cy="124" rx="2.5" ry="3.5" fill="#765137"/>
-                    <!-- Friendly smiling mouth -->
-                    <path d="M182 135 Q190 142 198 135" stroke="#765137" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-
-                    <!-- Left Eye + Interactive Pupil -->
-                    <ellipse cx="172" cy="88" rx="8" ry="9" fill="#FFFDF5" stroke="#765137" stroke-width="1"/>
-                    <g [attr.transform]="'translate(' + pupilX() + ', ' + pupilY() + ')'">
-                      <circle cx="172" cy="88" r="5" fill="#765137"/>
-                      <circle cx="174" cy="86" r="1.8" fill="#FFFFFF"/>
-                    </g>
-                    <!-- Eyelash -->
-                    <path d="M165 82 Q172 79 179 82" stroke="#765137" stroke-width="2" stroke-linecap="round" fill="none"/>
-
-                    <!-- Right Eye + Interactive Pupil -->
-                    <ellipse cx="208" cy="88" rx="8" ry="9" fill="#FFFDF5" stroke="#765137" stroke-width="1"/>
-                    <g [attr.transform]="'translate(' + pupilX() + ', ' + pupilY() + ')'">
-                      <circle cx="208" cy="88" r="5" fill="#765137"/>
-                      <circle cx="210" cy="86" r="1.8" fill="#FFFFFF"/>
-                    </g>
-                    <!-- Eyelash -->
-                    <path d="M201 82 Q208 79 215 82" stroke="#765137" stroke-width="2" stroke-linecap="round" fill="none"/>
-
-                  </g>
-                </svg>
+                <app-giraffe-portrait-svg style="height: 100%; width: 100%" [tilt]="headAngle()" [gazeX]="pupilX()" [gazeY]="pupilY()" />
               </div>
 
               <!-- Interactive Badge overlay -->

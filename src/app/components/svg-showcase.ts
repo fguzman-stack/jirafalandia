@@ -33,15 +33,15 @@ import { SavannaPanoramaSvg } from './svg/savanna-panorama-svg';
         <div class="text-center max-w-3xl mx-auto space-y-3">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF1A8] border border-[#F9BE36] text-xs sm:text-sm font-bold text-[#5B4222]">
             <mat-icon class="text-base text-[#D97706]">brush</mat-icon>
-            <span>Colección Vectorial 100% SVG Auténtica</span>
+            <span>Encuentros de cerca</span>
           </div>
 
           <h2 class="text-3xl sm:text-5xl font-extrabold text-[#4A3017] font-heading tracking-tight">
-            Colección de Jirafas
+            Un paseo entre gigantes
           </h2>
 
           <p class="text-base sm:text-lg text-[#A0835A] font-accent">
-            Ilustración vectorial &middot; pelaje generado por teselación geométrica &middot; 100% SVG nativo sin dependencias externas
+            Conoce sus siluetas, descubre sus manchas y acompaña a la manada hasta el atardecer.
           </p>
         </div>
 
@@ -118,7 +118,7 @@ import { SavannaPanoramaSvg } from './svg/savanna-panorama-svg';
         <div class="w-full space-y-3">
           <div class="text-center">
             <h3 class="font-heading font-extrabold text-2xl text-[#6B4C26]">Estampados</h3>
-            <p class="text-xs text-[#AE9060]">Texturas vectoriales listas para fondos, pelajes y textiles</p>
+             <p class="text-xs text-[#AE9060]">Acércate al pelaje: cada especie tiene su propia firma</p>
           </div>
           <app-giraffe-patterns-svg />
         </div>
