@@ -6,6 +6,8 @@
 
 Explora hábitats, descubre especies, juega y vive una aventura adorable.
 
+**🟢 Web en vivo:** https://fguzman-stack.github.io/jirafalandia/
+
 </div>
 
 ---
@@ -72,6 +74,11 @@ src/
 └── server.ts         # Servidor Express para SSR
 public/               # Favicon y estáticos
 ```
+
+## Despliegue
+
+Cada push a `main` dispara el workflow `.github/workflows/deploy-pages.yml`, que compila la app
+con base href `/jirafalandia/` y publica `dist/app/browser` en **GitHub Pages**.
 
 ## Licencia
 
