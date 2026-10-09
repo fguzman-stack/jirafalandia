@@ -7,13 +7,19 @@ import { Sound } from '../services/sound';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule],
   template: `
-    <footer class="relative bg-gradient-to-b from-[#FFF9E8] via-[#FFD54F]/30 to-[#765137] text-[#FFFDF5] pt-20 overflow-hidden">
+    <footer class="relative bg-gradient-to-b from-[#FFFDF5] via-[#FFD54F]/20 to-[#765137] text-[#FFFDF5] pt-24 overflow-hidden">
       
       <!-- Savannah Sunset Silhouette SVG Horizon -->
-      <div class="relative w-full h-40 sm:h-52 overflow-hidden pointer-events-none">
+      <div class="relative w-full h-44 sm:h-60 overflow-hidden pointer-events-none">
         
-        <!-- Setting Golden Sun Disk -->
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-[#FFD54F] opacity-70 blur-md"></div>
+        <!-- Setting Golden Sun Disk with Radiant Atmosphere Glow -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-gradient-to-t from-[#F59E0B] to-[#FDE047] opacity-80 blur-xl"></div>
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-40 h-40 rounded-full bg-[#FFF1A8] opacity-90 blur-sm"></div>
+
+        <!-- Twinkling Sunset Stars / Fireflies in Evening Sky -->
+        <div class="absolute top-4 left-1/4 w-1.5 h-1.5 rounded-full bg-white opacity-80 animate-ping" style="animation-duration: 3s;"></div>
+        <div class="absolute top-10 right-1/3 w-2 h-2 rounded-full bg-[#FFF1A8] opacity-70 animate-pulse" style="animation-duration: 2.2s;"></div>
+        <div class="absolute top-6 right-1/5 w-1 h-1 rounded-full bg-white opacity-90 animate-ping" style="animation-duration: 4s;"></div>
 
         <svg 
           viewBox="0 0 1200 200" 
@@ -56,13 +62,13 @@ import { Sound } from '../services/sound';
       </div>
 
       <!-- Footer Content -->
-      <div class="bg-[#765137] pb-12 pt-6 relative z-10 border-t border-[#F9BE36]/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="bg-[#765137] pb-14 pt-8 relative z-10 border-t border-[#F9BE36]/30 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <!-- Storybook Farewell Message -->
           <div class="text-center space-y-3 max-w-2xl mx-auto">
-            <span class="text-3xl block">🦒 ✨ 🌅</span>
-            <h3 class="text-2xl sm:text-3xl font-extrabold font-heading text-[#FFFDF5]">
+            <span class="text-4xl block">🦒 ✨ 🌅</span>
+            <h3 class="text-2xl sm:text-4xl font-extrabold font-heading text-[#FFFDF5]">
               Gracias por visitar Jirafalandia
             </h3>
             <p class="text-base sm:text-lg text-[#FFFDF5]/90 font-accent italic">
@@ -71,26 +77,32 @@ import { Sound } from '../services/sound';
           </div>
 
           <!-- Links, Scientific Sources & Attributions -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/10 text-xs sm:text-sm text-[#FFFDF5]/80">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/15 text-xs sm:text-sm text-[#FFFDF5]/85">
             
-            <div class="space-y-2">
-              <h4 class="font-extrabold text-[#FFD54F] uppercase tracking-wider text-xs">Jirafalandia</h4>
+            <div class="space-y-3">
+              <h4 class="font-extrabold text-[#FFD54F] uppercase tracking-wider text-xs flex items-center gap-2">
+                <mat-icon class="text-base">park</mat-icon> Jirafalandia
+              </h4>
               <p class="text-xs leading-relaxed text-[#FFFDF5]/80">
                 Un zoológico digital interactivo dedicado al descubrimiento, respeto y conservación de las jirafas africanas.
               </p>
             </div>
 
-            <div class="space-y-2">
-              <h4 class="font-extrabold text-[#FFD54F] uppercase tracking-wider text-xs">Fuentes Zoológicas</h4>
-              <ul class="space-y-1 text-xs">
+            <div class="space-y-3">
+              <h4 class="font-extrabold text-[#FFD54F] uppercase tracking-wider text-xs flex items-center gap-2">
+                <mat-icon class="text-base">menu_book</mat-icon> Fuentes Zoológicas
+              </h4>
+              <ul class="space-y-1.5 text-xs">
                 <li>&bull; Giraffe Conservation Foundation (GCF)</li>
                 <li>&bull; UICN Lista Roja de Especies Amenazadas</li>
                 <li>&bull; Taxonomía moderna de 4 especies de jirafa</li>
               </ul>
             </div>
 
-            <div class="space-y-2">
-              <h4 class="font-extrabold text-[#FFD54F] uppercase tracking-wider text-xs">Fotografía y Recursos</h4>
+            <div class="space-y-3">
+              <h4 class="font-extrabold text-[#FFD54F] uppercase tracking-wider text-xs flex items-center gap-2">
+                <mat-icon class="text-base">photo_camera</mat-icon> Fotografía y Recursos
+              </h4>
               <p class="text-xs leading-relaxed text-[#FFFDF5]/80">
                 Fotografías de fauna salvaje auténticas provenientes de Wikimedia Commons y Unsplash. Ilustraciones y sonidos originales.
               </p>
@@ -98,7 +110,7 @@ import { Sound } from '../services/sound';
                 <a 
                   href="#inicio" 
                   (click)="soundService.playPop()"
-                  class="inline-flex items-center gap-1 text-xs font-bold text-[#FFD54F] hover:underline"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFFDF5]/10 hover:bg-[#FFFDF5]/20 text-[#FFD54F] font-bold text-xs transition-colors border border-white/10"
                 >
                   <mat-icon class="text-sm">arrow_upward</mat-icon> Volver al inicio
                 </a>

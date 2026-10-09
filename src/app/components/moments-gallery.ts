@@ -29,17 +29,17 @@ import { Sound } from '../services/sound';
         </div>
 
         <!-- Asymmetric Editorial Photo Gallery Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           @for (photo of data.moments; track photo.id; let i = $index) {
             <button 
               type="button"
               (click)="openLightbox(i)"
               (keydown.enter)="openLightbox(i)"
               [attr.aria-label]="'Ver fotografía ampliada: ' + photo.title"
-              class="group relative rounded-3xl overflow-hidden border-2 border-[#F9BE36]/40 bg-[#FFF9E8] shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 text-left focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
+              class="group relative rounded-3xl overflow-hidden border-2 border-[#F9BE36]/40 bg-[#FFF9E8] shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2 text-left focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36] hover:border-[#F9BE36]"
               [class.sm:col-span-2]="i === 0 || i === 5"
               [class.h-80]="i !== 0 && i !== 5"
-              [class.h-96]="i === 0 || i === 5"
+              [class.h-[420px]]="i === 0 || i === 5"
             >
               <!-- Photo Image -->
               <img 
@@ -47,32 +47,37 @@ import { Sound } from '../services/sound';
                 [alt]="photo.alt"
                 loading="lazy"
                 referrerpolicy="no-referrer"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
               />
 
               <!-- Gradient overlay & caption -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity flex flex-col justify-between p-6">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 opacity-80 group-hover:opacity-95 transition-opacity flex flex-col justify-between p-6 sm:p-7">
                 <!-- Top Tag -->
                 <div class="flex justify-between items-start">
-                  <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold border border-white/30">
+                  <span class="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-extrabold border border-white/30 shadow-xs">
                     {{ photo.tag }}
                   </span>
-                  <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    <mat-icon class="text-base">zoom_in</mat-icon>
+                  <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100 shadow-md">
+                    <mat-icon class="text-xl">zoom_in</mat-icon>
                   </div>
                 </div>
 
                 <!-- Bottom Text -->
-                <div class="space-y-1 text-white">
-                  <h3 class="text-xl sm:text-2xl font-bold font-heading drop-shadow-sm">
+                <div class="space-y-1.5 text-white">
+                  <h3 class="text-xl sm:text-2xl font-extrabold font-heading drop-shadow-md">
                     {{ photo.title }}
                   </h3>
-                  <p class="text-xs sm:text-sm text-white/90 drop-shadow-xs line-clamp-2">
+                  <p class="text-xs sm:text-sm text-white/90 drop-shadow-sm line-clamp-2 font-medium">
                     {{ photo.caption }}
                   </p>
-                  <span class="text-[11px] text-[#FFD54F] font-semibold block pt-1">
-                    📍 {{ photo.location }}
-                  </span>
+                  <div class="flex items-center justify-between pt-1">
+                    <span class="text-xs text-[#FFD54F] font-bold">
+                      📍 {{ photo.location }}
+                    </span>
+                    <span class="text-[11px] text-white/70 italic opacity-0 group-hover:opacity-100 transition-opacity">
+                      Clic para ampliar
+                    </span>
+                  </div>
                 </div>
               </div>
 

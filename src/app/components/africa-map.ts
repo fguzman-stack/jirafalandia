@@ -10,13 +10,15 @@ import { HabitatScene } from './svg/habitat-scene';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, HabitatScene],
   template: `
-    <section id="donde-viven" class="py-20 bg-[#FFF9E8] relative overflow-hidden">
+    <section id="donde-viven" class="py-24 bg-gradient-to-b from-[#FFF9E8] via-[#FFFDF5] to-[#FFF9E8] relative overflow-hidden">
+      <!-- Decorative ambient shapes -->
+      <div class="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-[#E0F2FE]/40 blur-3xl pointer-events-none"></div>
       
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF1A8] border border-[#F9BE36] text-xs sm:text-sm font-bold text-[#765137]">
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFF1A8] border border-[#F9BE36] text-xs sm:text-sm font-extrabold text-[#765137] shadow-xs">
             <mat-icon class="text-base text-amber-700">public</mat-icon>
             <span>Geografía y Hábitats &middot; Mapa de África</span>
           </div>
@@ -25,23 +27,23 @@ import { HabitatScene } from './svg/habitat-scene';
             El Mundo de las Jirafas
           </h2>
 
-          <p class="text-base sm:text-lg text-[#765137]/80">
+          <p class="text-base sm:text-lg text-[#765137]/80 font-medium">
             Cada especie domina una región diferente del continente africano. Selecciona una jirafa para iluminar sus territorios de sabana, matorral y desierto.
           </p>
         </div>
 
         <!-- Interactive Species Selector Tabs -->
-        <div class="flex items-center justify-center flex-wrap gap-2.5 sm:gap-4 mb-10">
+        <div class="flex items-center justify-center flex-wrap gap-2.5 sm:gap-4 mb-12">
           @for (sp of data.species; track sp.id) {
             <button
               type="button"
               (click)="selectSpecies(sp)"
               [class]="selectedSpecies().id === sp.id
-                ? 'bg-[#F9BE36] text-[#765137] shadow-md scale-105 border-[#765137]/40 ring-2 ring-[#765137]/20'
-                : 'bg-[#FFFDF5] text-[#765137]/80 hover:bg-[#FFF1A8] border-[#F9BE36]/40'"
-              class="px-5 py-3 rounded-2xl border text-sm sm:text-base font-extrabold transition-all duration-200 flex items-center gap-2.5 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#F9BE36]"
+                ? 'bg-[#F9BE36] text-[#765137] shadow-lg scale-105 border-[#765137]/40 ring-3 ring-[#F9BE36]/40 font-extrabold'
+                : 'bg-[#FFFDF8] text-[#765137]/80 hover:bg-[#FFF1A8] border-[#F9BE36]/40 shadow-xs font-bold'"
+              class="px-5 py-3 rounded-2xl border text-sm sm:text-base transition-all duration-300 flex items-center gap-3 cursor-pointer focus:outline-hidden transform hover:-translate-y-1"
             >
-              <span class="w-3 h-3 rounded-full" [style.background-color]="sp.accentColor"></span>
+              <span class="w-3.5 h-3.5 rounded-full shadow-xs ring-2 ring-white" [style.background-color]="sp.accentColor"></span>
               <span>{{ sp.commonName }}</span>
             </button>
           }

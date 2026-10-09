@@ -31,58 +31,63 @@ import { Album } from '../services/album';
         </div>
 
         <!-- Interactive Height Comparison Interactive Spotlight Feature -->
-        <div class="mb-14 bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="mb-16 bg-gradient-to-br from-[#FFFDF8] via-[#FFFBF0] to-[#FFF9E8] border-2 border-[#F9BE36]/50 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-[#FFF1A8]/40 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             
             <div class="lg:col-span-5 space-y-4">
-              <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-[#FEF3C7] text-[#D97706] border border-[#FCD34D]">
-                Comparador Interactivo de Escala
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-[#FFF1A8] text-[#765137] border border-[#F9BE36] shadow-2xs inline-flex items-center gap-1.5">
+                <mat-icon class="text-sm text-amber-700">straighten</mat-icon> Comparador Interactivo de Escala
               </span>
 
               <h3 class="text-2xl sm:text-4xl font-extrabold text-[#765137] font-heading">
                 ¿Qué tan alta es una jirafa?
               </h3>
 
-              <p class="text-sm sm:text-base text-[#765137]/90 leading-relaxed">
+              <p class="text-sm sm:text-base text-[#765137]/90 leading-relaxed font-medium">
                 Una jirafa macho adulta puede alcanzar hasta <strong>5.8 metros</strong> de altura. Para entender esta escala colosal, compárala con un humano adulto y con un autobús urbano de dos pisos.
               </p>
 
               <!-- Interactive scale selector buttons -->
-              <div class="flex flex-wrap gap-2 pt-2">
+              <div class="flex flex-wrap gap-2.5 pt-2">
                 <button
                   type="button"
                   (click)="setScaleComparison('human')"
-                  [class]="activeScale() === 'human' ? 'bg-[#F9BE36] text-[#765137] shadow-sm' : 'bg-[#FFF9E8] text-[#765137]/80 hover:bg-[#FFF1A8]'"
-                  class="px-4 py-2 rounded-xl border border-[#F9BE36]/40 text-xs sm:text-sm font-bold transition-all cursor-pointer"
+                  [class]="activeScale() === 'human' ? 'bg-[#F9BE36] text-[#765137] shadow-md ring-2 ring-[#765137]/20 font-extrabold scale-105' : 'bg-[#FFF9E8] text-[#765137]/80 hover:bg-[#FFF1A8] font-bold'"
+                  class="px-4 py-2.5 rounded-xl border border-[#F9BE36]/50 text-xs sm:text-sm transition-all duration-200 cursor-pointer"
                 >
                   👤 Persona (1.75 m)
                 </button>
                 <button
                   type="button"
                   (click)="setScaleComparison('bus')"
-                  [class]="activeScale() === 'bus' ? 'bg-[#F9BE36] text-[#765137] shadow-sm' : 'bg-[#FFF9E8] text-[#765137]/80 hover:bg-[#FFF1A8]'"
-                  class="px-4 py-2 rounded-xl border border-[#F9BE36]/40 text-xs sm:text-sm font-bold transition-all cursor-pointer"
+                  [class]="activeScale() === 'bus' ? 'bg-[#F9BE36] text-[#765137] shadow-md ring-2 ring-[#765137]/20 font-extrabold scale-105' : 'bg-[#FFF9E8] text-[#765137]/80 hover:bg-[#FFF1A8] font-bold'"
+                  class="px-4 py-2.5 rounded-xl border border-[#F9BE36]/50 text-xs sm:text-sm transition-all duration-200 cursor-pointer"
                 >
                   🚌 Autobús (4.4 m)
                 </button>
                 <button
                   type="button"
                   (click)="setScaleComparison('both')"
-                  [class]="activeScale() === 'both' ? 'bg-[#F9BE36] text-[#765137] shadow-sm' : 'bg-[#FFF9E8] text-[#765137]/80 hover:bg-[#FFF1A8]'"
-                  class="px-4 py-2 rounded-xl border border-[#F9BE36]/40 text-xs sm:text-sm font-bold transition-all cursor-pointer"
+                  [class]="activeScale() === 'both' ? 'bg-[#F9BE36] text-[#765137] shadow-md ring-2 ring-[#765137]/20 font-extrabold scale-105' : 'bg-[#FFF9E8] text-[#765137]/80 hover:bg-[#FFF1A8] font-bold'"
+                  class="px-4 py-2.5 rounded-xl border border-[#F9BE36]/50 text-xs sm:text-sm transition-all duration-200 cursor-pointer"
                 >
                   ✨ Ver todos juntos
                 </button>
               </div>
 
               <!-- Fun Fact note -->
-              <div class="p-3.5 rounded-2xl bg-[#FFF1A8]/50 border border-[#F9BE36]/40 text-xs text-[#765137] leading-relaxed">
-                💡 <strong>Dato curioso:</strong> A pesar de tener un cuello de 2 metros de largo, las jirafas tienen exactamente el mismo número de vértebras cervicales que un humano: ¡solo 7 vértebras! Cada una mide unos 28 cm.
+              <div class="p-4 rounded-2xl bg-[#FFF1A8]/50 border border-[#F9BE36]/40 text-xs text-[#765137] leading-relaxed shadow-2xs flex items-start gap-2.5">
+                <span class="text-xl">💡</span>
+                <div>
+                  <strong>Dato anatómico asombroso:</strong> A pesar de tener un cuello de 2 metros de longitud, las jirafas poseen exactamente <strong>7 vértebras cervicales</strong>, ¡igual que tú y cualquier otro mamífero! Cada vértebra llega a medir casi 28 cm.
+                </div>
               </div>
             </div>
 
             <!-- Visual Height Chart SVG -->
-            <div class="lg:col-span-7 bg-[#FFF9E8] rounded-2xl border border-[#F9BE36]/30 p-4 sm:p-6 flex flex-col justify-end min-h-[360px]">
+            <div class="lg:col-span-7 bg-[#FFFDF8] rounded-2xl border-2 border-[#F9BE36]/30 p-4 sm:p-6 flex flex-col justify-end min-h-[360px] shadow-sm">
               <div class="relative w-full h-[320px]">
                 <svg viewBox="0 0 500 320" class="w-full h-full" role="img" aria-label="Compara la altura de una jirafa de 5,8 metros con una persona y un autobús de dos pisos">
                   
@@ -148,16 +153,16 @@ import { Album } from '../services/album';
         </div>
 
         <!-- 6 Visual Fact Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           @for (c of data.curiosities; track c.id) {
             <div 
-              class="p-6 sm:p-7 rounded-3xl border-2 border-[#F9BE36]/40 bg-[#FFFDF5] shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-5 group hover:-translate-y-1"
+              class="p-7 rounded-3xl border-2 border-[#F9BE36]/40 bg-[#FFFDF8] shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between space-y-5 group hover:-translate-y-2 hover:border-[#F9BE36]"
             >
               
               <div class="space-y-3">
                 <div class="flex items-center justify-between">
                   <!-- Icon Badge -->
-                  <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-sm" [style.background-color]="c.color">
+                  <div class="w-13 h-13 rounded-2xl flex items-center justify-center text-white shadow-md transition-transform group-hover:scale-110 duration-300" [style.background-color]="c.color">
                     <mat-icon class="text-2xl">{{ c.icon }}</mat-icon>
                   </div>
 
@@ -174,15 +179,15 @@ import { Album } from '../services/album';
                   {{ c.title }}
                 </h3>
 
-                <p class="text-sm text-[#765137]/80 leading-relaxed">
+                <p class="text-sm text-[#765137]/80 leading-relaxed font-medium">
                   {{ c.description }}
                 </p>
               </div>
 
               <!-- Comparison Highlight Box -->
-              <div class="p-4 rounded-2xl {{ c.bgColor }} border border-black/5 space-y-1 text-xs text-[#765137]">
+              <div class="p-4 rounded-2xl {{ c.bgColor }} border border-black/5 space-y-1 text-xs text-[#765137] shadow-2xs">
                 <span class="font-extrabold block text-sm" [style.color]="c.color">{{ c.comparisonTitle }}</span>
-                <span class="leading-relaxed block">{{ c.comparisonDesc }}</span>
+                <span class="leading-relaxed block opacity-90">{{ c.comparisonDesc }}</span>
               </div>
 
             </div>
@@ -191,19 +196,19 @@ import { Album } from '../services/album';
 
         <!-- Easter Egg: Hidden Luna Component (Section 8.4 Encuentra a Luna) -->
         <div class="mt-16 text-center">
-          <div class="inline-block relative p-4 rounded-3xl bg-[#FFFDF5] border-2 border-[#F9BE36]/50 shadow-md">
+          <div class="inline-block relative p-5 rounded-3xl bg-[#FFFDF8] border-2 border-[#F9BE36]/60 shadow-lg hover:shadow-xl transition-shadow">
             
             <div class="flex items-center gap-3">
-              <span class="text-lg">👀</span>
-              <span class="text-xs sm:text-sm font-bold text-[#765137]">
-                Pista secreta: Dicen que a Luna le gusta esconderse detrás de las acacias...
+              <span class="text-2xl">👀</span>
+              <span class="text-xs sm:text-sm font-extrabold text-[#765137]">
+                Pista secreta: Dicen que a Luna le encanta jugar al escondite detrás de las acacias...
               </span>
 
               <!-- Luna Hiding Peek-A-Boo Interactive Button -->
               <button
                 type="button"
                 (click)="findLuna()"
-                class="ml-2 px-3 py-1.5 rounded-xl bg-[#FFF1A8] hover:bg-[#F9BE36] text-[#765137] text-xs font-extrabold border border-[#F9BE36] transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+                class="ml-2 px-4 py-2 rounded-xl bg-[#FFF1A8] hover:bg-[#F9BE36] text-[#765137] text-xs font-extrabold border border-[#F9BE36] transition-all cursor-pointer shadow-xs hover:scale-105 active:scale-95"
                 title="¿Quién se asoma por aquí?"
               >
                 ¿Mirar detrás? 🦒
@@ -224,7 +229,7 @@ import { Album } from '../services/album';
                 <button
                   type="button"
                   (click)="lunaDiscovered.set(false)"
-                  class="px-3 py-1 rounded-xl bg-white text-xs font-bold text-[#765137] shadow-xs cursor-pointer"
+                  class="px-4 py-1.5 rounded-xl bg-white text-xs font-extrabold text-[#765137] shadow-sm cursor-pointer hover:bg-stone-50"
                 >
                   ¡Genial!
                 </button>

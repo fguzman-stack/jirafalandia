@@ -18,36 +18,36 @@ interface LeafItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, GiraffeArt, AcaciaArt],
   template: `
-    <div id="alimentar-jirafa" class="bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+    <div id="alimentar-jirafa" class="bg-gradient-to-br from-[#FFFDF8] via-[#FFFBF0] to-[#FFF9E8] border-2 border-[#F9BE36]/50 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
       
       <!-- Header -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#F9BE36]/30">
         <div>
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8F3E5] text-[#557A55] text-xs font-bold mb-1">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8F3E5] text-[#557A55] text-xs font-extrabold mb-1 shadow-2xs border border-[#C8DEBC]">
             <mat-icon class="text-sm">eco</mat-icon> Minijuego 1
           </div>
           <h3 class="text-2xl sm:text-3xl font-extrabold text-[#765137] font-heading">
             Alimenta a la Jirafa
           </h3>
-          <p class="text-xs sm:text-sm text-[#765137]/80">
+          <p class="text-xs sm:text-sm text-[#765137]/80 font-medium">
             Toca o haz clic sobre las hojas frescas de acacia para que Luna las saboree con su lengua prensil.
           </p>
         </div>
 
         <!-- Feeding Score & Counter -->
-        <div class="flex items-center gap-3 bg-[#FFF1A8] px-4 py-2.5 rounded-2xl border border-[#F9BE36]">
-          <div class="w-10 h-10 rounded-xl bg-[#FFFDF5] flex items-center justify-center text-amber-700 shadow-2xs font-extrabold text-lg">
+        <div class="flex items-center gap-3 bg-[#FFF1A8] px-4 py-2.5 rounded-2xl border border-[#F9BE36] shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-[#FFFDF8] flex items-center justify-center text-amber-800 shadow-xs font-extrabold text-xl ring-2 ring-[#F9BE36]/40">
             {{ leavesFed() }}
           </div>
           <div class="text-xs text-[#765137]">
-            <span class="font-extrabold block">Hojas comidas</span>
-            <span class="text-[#765137]/70">Meta: 5 para medalla</span>
+            <span class="font-extrabold block text-sm">Hojas comidas</span>
+            <span class="text-[#765137]/75 font-semibold">Meta: 5 para medalla</span>
           </div>
         </div>
       </div>
 
       <!-- Feeding Playground Area -->
-      <div class="relative w-full h-[360px] sm:h-[400px] rounded-2xl bg-gradient-to-b from-[#FFFDF5] via-[#FFF9E8] to-[#E8F3E5] border border-[#F9BE36]/30 overflow-hidden select-none">
+      <div class="relative w-full h-[360px] sm:h-[400px] rounded-2xl bg-gradient-to-b from-[#FFFDF8] via-[#FFF9E8] to-[#E8F3E5] border-2 border-[#F9BE36]/30 overflow-hidden select-none shadow-inner">
         
         <!-- Background Savannah Sky & Birds -->
         <div class="absolute top-4 left-6 opacity-40">

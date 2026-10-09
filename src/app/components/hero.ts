@@ -14,9 +14,22 @@ import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
       (mousemove)="onMouseMove($event)"
       class="relative min-h-[92vh] pt-28 pb-16 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#FFF1A8] via-[#FFF9E8] to-[#FFF9E8]"
     >
-      <!-- Sun background illumination -->
-      <div class="absolute -top-16 -right-16 w-96 h-96 rounded-full bg-[#FFD54F]/40 blur-3xl pointer-events-none"></div>
-      <div class="absolute top-1/4 left-5 w-72 h-72 rounded-full bg-[#FFF1A8]/60 blur-2xl pointer-events-none"></div>
+      <!-- Mesh-gradient aurora glow layers -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-20 -right-20 w-[500px] h-[500px] rounded-full bg-[#FFD54F]/30 blur-[100px]"></div>
+        <div class="absolute top-1/3 -left-10 w-[400px] h-[400px] rounded-full bg-[#FFC6A5]/20 blur-[80px]"></div>
+        <div class="absolute bottom-20 right-1/4 w-[300px] h-[300px] rounded-full bg-[#A7C99A]/15 blur-[90px]"></div>
+      </div>
+
+      <!-- Floating sparkle particles -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-[15%] left-[10%] w-2 h-2 rounded-full bg-[#FFD54F] opacity-60" style="animation: sparkle 3s ease-in-out infinite;"></div>
+        <div class="absolute top-[25%] right-[20%] w-1.5 h-1.5 rounded-full bg-[#F9BE36] opacity-50" style="animation: sparkle 4s ease-in-out 1s infinite;"></div>
+        <div class="absolute top-[60%] left-[30%] w-2.5 h-2.5 rounded-full bg-[#FFC6A5] opacity-40" style="animation: sparkle 3.5s ease-in-out 0.5s infinite;"></div>
+        <div class="absolute top-[40%] right-[35%] w-1.5 h-1.5 rounded-full bg-[#A7C99A] opacity-50" style="animation: sparkle 5s ease-in-out 2s infinite;"></div>
+        <div class="absolute bottom-[30%] left-[60%] w-2 h-2 rounded-full bg-[#FFD54F] opacity-45" style="animation: sparkle 3.2s ease-in-out 1.5s infinite;"></div>
+        <div class="absolute top-[70%] right-[10%] w-1 h-1 rounded-full bg-[#F9BE36] opacity-55" style="animation: sparkle 4.5s ease-in-out 0.8s infinite;"></div>
+      </div>
 
       <!-- Floating Animated Clouds -->
       <div class="absolute top-24 left-10 opacity-70 animate-float pointer-events-none hidden md:block">
@@ -70,7 +83,7 @@ import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
               <a 
                 href="#mapa" 
                 (click)="onExploreClick()"
-                class="px-8 py-4 rounded-2xl bg-[#F9BE36] hover:bg-[#FFD54F] text-[#765137] font-extrabold text-base sm:text-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border-2 border-[#765137]/15 cursor-pointer focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
+                class="px-8 py-4 rounded-2xl bg-gradient-to-r from-[#F9BE36] via-[#FFD54F] to-[#F9BE36] bg-[length:200%_100%] hover:bg-right text-[#765137] font-extrabold text-base sm:text-lg shadow-[0_4px_20px_-4px_rgba(249,190,54,0.5)] hover:shadow-[0_8px_30px_-4px_rgba(249,190,54,0.7)] transition-all duration-500 transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3 border-2 border-[#765137]/10 cursor-pointer focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36] animate-glow"
               >
                 <span>¡Comenzar aventura!</span>
                 <mat-icon class="text-xl">explore</mat-icon>
@@ -79,7 +92,7 @@ import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
               <a 
                 href="#jirafas" 
                 (click)="soundService.playPop()"
-                class="px-7 py-4 rounded-2xl bg-[#FFFDF5] hover:bg-[#FFF1A8] text-[#765137] font-bold text-base sm:text-lg border-2 border-[#F9BE36]/40 shadow-xs hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
+                class="px-7 py-4 rounded-2xl bg-[#FFFDF5]/80 backdrop-blur-sm hover:bg-[#FFF1A8] text-[#765137] font-bold text-base sm:text-lg border-2 border-[#F9BE36]/40 shadow-sm hover:shadow-lg transition-all duration-400 transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
               >
                 <span>Conoce a las jirafas</span>
                 <mat-icon class="text-xl">pets</mat-icon>
@@ -87,24 +100,24 @@ import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
             </div>
 
             <!-- Safari Quick Stats / Fun highlight -->
-            <div class="pt-4 flex flex-wrap items-center gap-6 text-sm text-[#765137]/80 border-t border-[#F9BE36]/30 w-full">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-[#A7C99A]/40 flex items-center justify-center text-[#557A55]">
+            <div class="pt-4 flex flex-wrap items-center gap-6 text-sm text-[#765137]/80 border-t border-[#F9BE36]/20 w-full">
+              <div class="flex items-center gap-2 group/stat">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#A7C99A]/50 to-[#557A55]/30 flex items-center justify-center text-[#557A55] shadow-sm transition-transform duration-300 group-hover/stat:scale-110">
                   <mat-icon class="text-base">verified</mat-icon>
                 </div>
-                <span>4 especies reconocidas</span>
+                <span class="font-semibold">4 especies reconocidas</span>
               </div>
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-[#FFD54F]/40 flex items-center justify-center text-[#765137]">
+              <div class="flex items-center gap-2 group/stat">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FFD54F]/50 to-[#F9BE36]/30 flex items-center justify-center text-[#765137] shadow-sm transition-transform duration-300 group-hover/stat:scale-110">
                   <mat-icon class="text-base">sports_esports</mat-icon>
                 </div>
-                <span>Minijuegos interactivos</span>
+                <span class="font-semibold">Minijuegos interactivos</span>
               </div>
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-[#FFC6A5]/50 flex items-center justify-center text-[#765137]">
+              <div class="flex items-center gap-2 group/stat">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FFC6A5]/60 to-[#FFC6A5]/30 flex items-center justify-center text-[#765137] shadow-sm transition-transform duration-300 group-hover/stat:scale-110">
                   <mat-icon class="text-base">collections_bookmark</mat-icon>
                 </div>
-                <span>Álbum de pegatinas</span>
+                <span class="font-semibold">Álbum de pegatinas</span>
               </div>
             </div>
 
@@ -128,7 +141,7 @@ import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
             <button
               type="button"
               (click)="onGiraffeClick()"
-              class="w-full max-w-md h-[460px] sm:h-[500px] relative rounded-3xl bg-gradient-to-b from-[#FFFDF5] via-[#FFF9E8] to-[#FFF1A8] border-3 border-[#F9BE36]/60 shadow-xl overflow-hidden cursor-pointer group select-none transition-transform hover:scale-[1.01] text-left focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
+              class="w-full max-w-md h-[460px] sm:h-[500px] relative rounded-3xl bg-gradient-to-b from-[#FFFDF5] via-[#FFF9E8] to-[#FFF1A8] border-3 border-[#F9BE36]/40 shadow-[0_20px_60px_-15px_rgba(118,81,55,0.15)] hover:shadow-[0_25px_70px_-15px_rgba(118,81,55,0.25)] overflow-hidden cursor-pointer group select-none transition-all duration-500 hover:scale-[1.02] text-left focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#F9BE36]"
               title="¡Haz clic en Luna para saludarla!"
               aria-label="Interactuar con Luna la jirafa"
             >
@@ -159,9 +172,10 @@ import { GiraffePortraitSvg } from './svg/giraffe-portrait-svg';
       </div>
 
       <!-- Bottom Landscape Transition Wave -->
-      <div class="absolute bottom-0 left-0 right-0 h-10 pointer-events-none">
-        <svg viewBox="0 0 1440 60" fill="none" class="w-full h-full preserve-3d" preserveAspectRatio="none">
-          <path d="M0,40 C320,60 480,20 720,45 C960,70 1200,20 1440,40 L1440,60 L0,60 Z" fill="#FFF9E8"/>
+      <div class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none">
+        <svg viewBox="0 0 1440 80" fill="none" class="w-full h-full preserve-3d" preserveAspectRatio="none">
+          <path d="M0,50 C240,70 480,20 720,55 C960,80 1200,30 1440,50 L1440,80 L0,80 Z" fill="#FFF9E8" opacity="0.6"/>
+          <path d="M0,55 C320,75 480,30 720,60 C960,85 1200,35 1440,55 L1440,80 L0,80 Z" fill="#FFF9E8"/>
         </svg>
       </div>
     </section>

@@ -10,30 +10,30 @@ import { CoatSwatch } from './svg/coat-swatch';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, CoatSwatch],
   template: `
-    <div id="juego-manchas" class="bg-[#FFFDF5] border-3 border-[#F9BE36]/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+    <div id="juego-manchas" class="bg-gradient-to-br from-[#FFFDF8] via-[#FFFBF0] to-[#FFF9E8] border-2 border-[#F9BE36]/50 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
       
       <!-- Header -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#F9BE36]/30">
         <div>
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3C7] text-[#D97706] text-xs font-bold mb-1">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3C7] text-[#D97706] text-xs font-extrabold mb-1 shadow-2xs border border-[#FCD34D]">
             <mat-icon class="text-sm">scatter_plot</mat-icon> Minijuego 2
           </div>
           <h3 class="text-2xl sm:text-3xl font-extrabold text-[#765137] font-heading">
             Descubre las Manchas
           </h3>
-          <p class="text-xs sm:text-sm text-[#765137]/80">
+          <p class="text-xs sm:text-sm text-[#765137]/80 font-medium">
             Cada especie de jirafa viste un patrón de pelaje único. ¿Puedes relacionar la textura con la especie correcta?
           </p>
         </div>
 
         <!-- Score & Round indicator -->
-        <div class="flex items-center gap-3 bg-[#FFF1A8] px-4 py-2.5 rounded-2xl border border-[#F9BE36]">
-          <div class="w-10 h-10 rounded-xl bg-[#FFFDF5] flex items-center justify-center text-amber-700 shadow-2xs font-extrabold text-base">
+        <div class="flex items-center gap-3 bg-[#FFF1A8] px-4 py-2.5 rounded-2xl border border-[#F9BE36] shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-[#FFFDF8] flex items-center justify-center text-amber-800 shadow-xs font-extrabold text-base ring-2 ring-[#F9BE36]/40">
             {{ currentIndex() + 1 }}/{{ totalQuestions }}
           </div>
           <div class="text-xs text-[#765137]">
-            <span class="font-extrabold block">Aciertos: {{ correctCount() }}</span>
-            <span class="text-[#765137]/70">Ronda de detectives</span>
+            <span class="font-extrabold block text-sm">Aciertos: {{ correctCount() }}</span>
+            <span class="text-[#765137]/75 font-semibold">Ronda de detectives</span>
           </div>
         </div>
       </div>
@@ -43,20 +43,22 @@ import { CoatSwatch } from './svg/coat-swatch';
         <div class="space-y-6">
           
           <!-- Central Pattern Inspection Box -->
-          <div class="bg-[#FFF9E8] border-2 border-[#F9BE36]/50 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+          <div class="bg-[#FFFDF8] border-2 border-[#F9BE36]/40 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6 shadow-sm">
             
             <!-- Large Illustrated Pattern Tile -->
-            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-3 border-[#765137]/20 shadow-md shrink-0 bg-white">
+            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-3 border-[#765137]/20 shadow-md shrink-0 bg-white group hover:scale-105 transition-transform duration-300">
               <app-coat-swatch [pattern]="currentQuestion().patternType" />
             </div>
 
             <!-- Hint & Description -->
             <div class="space-y-2 text-center md:text-left">
-              <span class="text-xs font-bold uppercase tracking-wider text-[#D97706]">Pista del detective:</span>
-              <h4 class="text-lg sm:text-xl font-bold text-[#765137] font-heading">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-[#D97706] inline-flex items-center gap-1">
+                <mat-icon class="text-sm">search</mat-icon> Pista del detective:
+              </span>
+              <h4 class="text-lg sm:text-xl font-extrabold text-[#765137] font-heading">
                 "{{ currentQuestion().hint }}"
               </h4>
-              <p class="text-xs sm:text-sm text-[#765137]/80 leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#765137]/80 leading-relaxed font-medium">
                 Examina los bordes, el color y la regularidad del dibujo. ¿A cuál de estas 4 jirafas pertenece este pelaje?
               </p>
             </div>
@@ -64,18 +66,18 @@ import { CoatSwatch } from './svg/coat-swatch';
           </div>
 
           <!-- Answer Options Grid (The 4 species) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             @for (sp of data.species; track sp.id) {
               <button
                 type="button"
                 [disabled]="selectedAnswer() !== null"
                 (click)="checkAnswer(sp.commonName)"
                 [class]="getButtonClass(sp.commonName)"
-                class="p-4 rounded-2xl border text-left font-bold transition-all duration-200 flex items-center justify-between cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#F9BE36]"
+                class="p-4 rounded-2xl border text-left font-bold transition-all duration-200 flex items-center justify-between cursor-pointer focus:outline-hidden transform hover:-translate-y-0.5 active:scale-98 shadow-xs"
               >
                 <div class="flex items-center gap-3">
-                  <span class="w-3 h-3 rounded-full" [style.background-color]="sp.accentColor"></span>
-                  <span class="text-sm sm:text-base text-[#765137]">{{ sp.commonName }}</span>
+                  <span class="w-3.5 h-3.5 rounded-full ring-2 ring-white shadow-xs" [style.background-color]="sp.accentColor"></span>
+                  <span class="text-sm sm:text-base font-extrabold text-[#765137]">{{ sp.commonName }}</span>
                 </div>
                 <mat-icon class="text-amber-700/60 text-lg">chevron_right</mat-icon>
               </button>
